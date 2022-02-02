@@ -89,8 +89,60 @@
                     <hr />
                     {% endfor %}
                 </div>
+                <div class="form-group pt-3">
+                    <label for="name">Full Name</label>
+                    <input required class="form-control" type="text" placeholder="Your Name" name="name" />
+                </div>
+                <div class="form-group pt-3">
+                    <label for="name">Email Address</label>
+                    <input required class="form-control" type="text" placeholder="example@email.ie" name="email" />
+                </div>
+                <div class="form-group pt-3">
+                    <label for="name">Street Address</label>
+                    <input required class="form-control" type="text" placeholder="12 Name Street," name="street" />
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group pt-3">
+                            <label for="name">City</label>
+                            <input required class="form-control" type="text" placeholder="Dublin City" name="city" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group pt-3">
+                            <label for="name">County</label>
+                            <input required class="form-control" type="text" placeholder="Dublin" name="county" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group pt-3">
+                            <label for="name">Postcode</label>
+                            <input required class="form-control" type="text" placeholder="D12 FE81" name="postcode" />
+                        </div>
+                    </div>
+                </div>
+               
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#submitModal">Submit Order
+                </button>
 
-                <button class="btn btn-dark mt-5">Place Order!</button>
+                <div class="modal fade" id="#submitModal" tabindex="-1" role="dialog" aria-labelledby="#submitModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="#submitModalLabel">Submit Your Order!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Go Back</button>
+                                <button type="submit" class="btn btn-dark">Place Order!</button>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>
