@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from .models import MenuItem, Catagory, OrderModel
 
 class Index(View):
     def get(self, request, *args, **kwargs):
@@ -13,10 +14,10 @@ class Order(View):
     def get(self, request, *args, **kwargs):
         
         #get every item from each catagory
-        appetizers = MenuItem.objects.filter(category__name__contains='Appetizer')
-        entres = MenuItem.objects.filter(category__name__contains='Entre')
-        desserts = MenuItem.objects.filter(category__name__contains='Dessert')
-        drinks = MenuItem.objects.filter(category__name__contains='Drink')
+        appetizers = MenuItem.objects.filter(catagory__name__contains='Appetizer')
+        entres = MenuItem.objects.filter(catagory__name__contains='Entre')
+        desserts = MenuItem.objects.filter(catagory__name__contains='Dessert')
+        drinks = MenuItem.objects.filter(catagory__name__contains='Drink')
         #pass into context
         context= {
             'appetizers': appetizers,
