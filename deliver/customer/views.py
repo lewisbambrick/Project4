@@ -37,7 +37,7 @@ class Order(View):
         items = request.POST.getlist('items[]')
 
         for item in items:
-            Menu_item = MenuItem.objects.get(pk__contains=int(item))
+            menu_item = MenuItem.objects.get(pk=int(item))
             item_data = {
                 'id': menu_item.pk,
                 'name': menu_item.name,
@@ -47,19 +47,20 @@ class Order(View):
             order_items['items'].append(item_data)
 
             price = 0
-            items_ids - []
+            item_ids = []
 
-            for item in order_items['items']:
-                price += item['price']
-                item_ids.append(item['id'])
+        for item in order_items['items']:
+            price += item['price']
+            item_ids.append(item['id'])
             
-            order = OrderModel.objects.create(price=price)
-            order.item.add(*item_ids)
+        order = OrderModel.objects.create(price=price)
+        order.items.add(*item_ids)
 
-            context = {
+        context = {
 
-                'items': order_items['items'],
-                'price': price
-            }
+            'items': order_items['items'],
+            'price': price
+        }
 
-            return render(request, 'customer/order_confirmation.html,', context)
+        return render(request, 'customer/order_confirmation.html', context)
+            
