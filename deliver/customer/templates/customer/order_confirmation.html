@@ -20,23 +20,21 @@
             <p class="font-weight-bold pt-4">Total: {{ price }}</p>
         </div>
     </div>
-    <div class="row justify-content-center pt-5 pb-2">
+    <div class="row justify-content-center pb-2 pt-5">
         <div class="col-md-6 text-center">
-            <h3>Pay no or pay cash on delivery.</h3>
-
+            <h3>Pay Now or Pay With Cash At Delivery</h3>
         </div>
     </div>
     <div class="row justify-content-center pb-5">
-            <div class="col-md-6 text-center">
-                <div id="paypal-button"></div>
-
-            </div>
+        <div class="col-md-6 text-center">
+            <div id="paypal-button"></div>
+        </div>
     </div>
 </div>
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
-    function getCookie(name) {
+  function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
@@ -57,7 +55,7 @@ const csrftoken = getCookie('csrftoken');
     // Configure environment
     env: 'sandbox',
     client: {
-      sandbox: 'AVHDctzYpJLGAItqFl-sV0V5qJnSE2FkSK8p8V1tw9WClGOlgG0jw94OpqP1tXRskAJL0Qdh-zWR0YTp',
+      sandbox: 'ATf0mGB3vK4K0ruj9oujCFC_YSC_2W-PmNuNYNdcqdixOKmz7mic_Wadms0Ua7d7X9T4sl9phxJwwgIh',
       production: 'demo_production_client_id'
     },
     // Customize button (optional)
@@ -76,7 +74,7 @@ const csrftoken = getCookie('csrftoken');
       return actions.payment.create({
         transactions: [{
           amount: {
-            total: '{{price}}',
+            total: '{{ price }}',
             currency: 'USD'
           }
         }]
@@ -92,11 +90,10 @@ const csrftoken = getCookie('csrftoken');
             beforeSend: function(request) {
                 request.setRequestHeader('X-CSRFToken', csrftoken)
             },
-            data: JSON.stringify({'isPaid':true}),
+            data: JSON.stringify({'isPaid': true}),
             success: function(data) {
-                window.location.href= '/payment-confirmation/'
+                window.location.href = '/payment-confirmation/'
             }
-
         })
       });
     }
